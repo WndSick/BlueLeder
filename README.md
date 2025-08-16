@@ -166,3 +166,5 @@
 - chore: configure TypeScript (2026-01-06T13:03:13.900Z)
 
 - chore: add ESLint and Prettier (2025-11-06T13:03:14.112Z)
+
+- feat: implement notification service (2025-08-16T13:03:14.323Z)
