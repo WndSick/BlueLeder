@@ -104,3 +104,5 @@
 - feat: bootstrap Express server (2025-08-23T13:03:06.951Z)
 
 - feat: add BullMQ background jobs (2025-09-22T13:03:07.167Z)
+
+- docs: document backend setup (2025-08-17T13:03:07.378Z)
