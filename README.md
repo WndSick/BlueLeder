@@ -100,3 +100,5 @@
 - chore: add Docker development setup (2025-09-16T13:03:06.534Z)
 
 - feat: implement notification service (2026-01-31T13:03:06.740Z)
+
+- feat: bootstrap Express server (2025-08-23T13:03:06.951Z)
