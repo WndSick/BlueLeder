@@ -184,3 +184,5 @@
 - feat: add refresh token support (2026-05-23T13:03:15.936Z)
 
 - docs: add API usage examples (2026-03-05T13:03:16.145Z)
+
+- refactor: modularize route definitions (2025-09-05T13:03:16.361Z)
