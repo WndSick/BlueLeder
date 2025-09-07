@@ -124,3 +124,5 @@
 - feat: bootstrap Express server (2025-09-28T13:03:09.214Z)
 
 - chore: initialize project structure (2025-10-28T13:03:09.437Z)
+
+- docs: document backend setup (2025-09-07T13:03:09.659Z)
