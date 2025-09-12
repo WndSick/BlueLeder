@@ -156,3 +156,5 @@
 - feat: implement activity discovery endpoint (2026-01-17T13:03:12.846Z)
 
 - feat: implement user registration (2026-02-02T13:03:13.060Z)
+
+- feat: implement activity creation API (2025-09-12T13:03:13.261Z)
