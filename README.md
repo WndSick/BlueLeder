@@ -8,3 +8,5 @@
 - docs: add API usage examples (2026-06-25T13:02:56.425Z)
 
 - feat: add socket authentication (2025-10-28T13:02:56.637Z)
+
+- docs: document backend setup (2025-09-17T13:02:56.880Z)
