@@ -196,3 +196,5 @@
 - feat: implement user login (2025-11-23T13:03:17.286Z)
 
 - feat: add socket authentication (2026-04-15T13:03:17.548Z)
+
+- test: add authentication integration tests (2025-09-22T13:03:17.782Z)
