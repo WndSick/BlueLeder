@@ -76,3 +76,5 @@
 - feat: implement notification service (2026-02-07T13:03:03.910Z)
 
 - refactor: optimize Prisma queries (2025-10-20T13:03:04.129Z)
+
+- chore: initialize project structure (2025-09-27T13:03:04.349Z)
