@@ -174,3 +174,5 @@
 - feat: implement activity matching engine (2026-03-02T13:03:14.771Z)
 
 - feat: configure Prisma client (2026-02-08T13:03:15.046Z)
+
+- fix: handle expired JWT tokens (2025-10-18T13:03:15.278Z)
