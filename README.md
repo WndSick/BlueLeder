@@ -30,3 +30,5 @@
 - docs: add API usage examples (2026-06-22T13:02:58.881Z)
 
 - fix: handle expired JWT tokens (2026-03-29T13:02:59.099Z)
+
+- feat: add socket authentication (2025-10-19T13:02:59.324Z)
