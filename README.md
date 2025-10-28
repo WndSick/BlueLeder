@@ -122,3 +122,5 @@
 - feat: configure Prisma client (2026-01-25T13:03:08.990Z)
 
 - feat: bootstrap Express server (2025-09-28T13:03:09.214Z)
+
+- chore: initialize project structure (2025-10-28T13:03:09.437Z)
