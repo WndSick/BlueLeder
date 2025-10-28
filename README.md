@@ -6,3 +6,5 @@
 - feat: implement booking workflow (2025-09-22T13:02:56.209Z)
 
 - docs: add API usage examples (2026-06-25T13:02:56.425Z)
+
+- feat: add socket authentication (2025-10-28T13:02:56.637Z)
