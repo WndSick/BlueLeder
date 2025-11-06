@@ -164,3 +164,5 @@
 - refactor: modularize route definitions (2025-12-28T13:03:13.688Z)
 
 - chore: configure TypeScript (2026-01-06T13:03:13.900Z)
+
+- chore: add ESLint and Prettier (2025-11-06T13:03:14.112Z)
