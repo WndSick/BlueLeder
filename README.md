@@ -128,3 +128,5 @@
 - docs: document backend setup (2025-09-07T13:03:09.659Z)
 
 - test: add authentication integration tests (2026-01-31T13:03:09.881Z)
+
+- feat: add BullMQ background jobs (2025-12-03T13:03:10.097Z)
