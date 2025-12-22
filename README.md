@@ -12,3 +12,5 @@
 - docs: document backend setup (2025-09-17T13:02:56.880Z)
 
 - feat: implement activity discovery endpoint (2026-03-18T13:02:57.083Z)
+
+- feat: integrate Redis caching (2025-12-22T13:02:57.325Z)
