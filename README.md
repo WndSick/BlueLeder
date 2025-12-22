@@ -150,3 +150,5 @@
 - docs: add API usage examples (2026-03-28T13:03:12.205Z)
 
 - feat: add socket authentication (2026-06-14T13:03:12.426Z)
+
+- feat: add refresh token support (2025-12-22T13:03:12.627Z)
