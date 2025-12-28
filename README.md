@@ -160,3 +160,5 @@
 - feat: implement activity creation API (2025-09-12T13:03:13.261Z)
 
 - feat: implement activity matching engine (2026-04-14T13:03:13.472Z)
+
+- refactor: modularize route definitions (2025-12-28T13:03:13.688Z)
