@@ -142,3 +142,5 @@
 - feat: configure Prisma client (2026-08-09T13:03:11.263Z)
 
 - docs: document environment variables (2026-07-24T13:03:11.495Z)
+
+- chore: configure TypeScript (2025-12-31T13:03:11.716Z)
