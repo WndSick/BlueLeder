@@ -34,3 +34,5 @@
 - feat: add socket authentication (2025-10-19T13:02:59.324Z)
 
 - fix: resolve Redis reconnect handling (2026-06-13T13:02:59.540Z)
+
+- test: add authentication integration tests (2026-01-02T13:02:59.769Z)
