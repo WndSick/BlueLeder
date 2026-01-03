@@ -130,3 +130,5 @@
 - test: add authentication integration tests (2026-01-31T13:03:09.881Z)
 
 - feat: add BullMQ background jobs (2025-12-03T13:03:10.097Z)
+
+- refactor: optimize Prisma queries (2026-01-03T13:03:10.330Z)
