@@ -62,3 +62,5 @@
 - feat: configure Prisma client (2026-01-11T13:03:02.362Z)
 
 - feat: implement activity discovery endpoint (2026-01-12T13:03:02.591Z)
+
+- chore: add ESLint and Prettier (2026-01-07T13:03:02.805Z)
