@@ -58,3 +58,5 @@
 - feat: bootstrap Express server (2025-11-12T13:03:01.918Z)
 
 - fix: handle expired JWT tokens (2026-08-04T13:03:02.137Z)
+
+- feat: configure Prisma client (2026-01-11T13:03:02.362Z)
