@@ -46,3 +46,5 @@
 - docs: document backend setup (2026-04-28T13:03:00.654Z)
 
 - docs: add project architecture overview (2026-03-07T13:03:00.866Z)
+
+- feat: implement activity matching engine (2026-01-12T13:03:01.082Z)
