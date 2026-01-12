@@ -60,3 +60,5 @@
 - fix: handle expired JWT tokens (2026-08-04T13:03:02.137Z)
 
 - feat: configure Prisma client (2026-01-11T13:03:02.362Z)
+
+- feat: implement activity discovery endpoint (2026-01-12T13:03:02.591Z)
