@@ -18,3 +18,5 @@
 - feat: implement user login (2026-06-10T13:02:57.554Z)
 
 - refactor: extract authentication service (2026-07-06T13:02:57.797Z)
+
+- refactor: separate booking business logic (2026-01-12T13:02:58.016Z)
