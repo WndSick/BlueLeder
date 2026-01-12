@@ -190,3 +190,5 @@
 - feat: implement notification service (2025-10-21T13:03:16.590Z)
 
 - feat: implement notification service (2026-05-12T13:03:16.823Z)
+
+- docs: add project architecture overview (2026-01-12T13:03:17.043Z)
