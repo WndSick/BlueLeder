@@ -152,3 +152,5 @@
 - feat: add socket authentication (2026-06-14T13:03:12.426Z)
 
 - feat: add refresh token support (2025-12-22T13:03:12.627Z)
+
+- feat: implement activity discovery endpoint (2026-01-17T13:03:12.846Z)
