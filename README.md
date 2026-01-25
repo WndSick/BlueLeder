@@ -118,3 +118,5 @@
 - feat: add request validation middleware (2026-08-04T13:03:08.531Z)
 
 - feat: integrate Redis caching (2026-02-25T13:03:08.755Z)
+
+- feat: configure Prisma client (2026-01-25T13:03:08.990Z)
