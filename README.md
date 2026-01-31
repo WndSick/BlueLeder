@@ -126,3 +126,5 @@
 - chore: initialize project structure (2025-10-28T13:03:09.437Z)
 
 - docs: document backend setup (2025-09-07T13:03:09.659Z)
+
+- test: add authentication integration tests (2026-01-31T13:03:09.881Z)
