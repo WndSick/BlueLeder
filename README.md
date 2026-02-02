@@ -154,3 +154,5 @@
 - feat: add refresh token support (2025-12-22T13:03:12.627Z)
 
 - feat: implement activity discovery endpoint (2026-01-17T13:03:12.846Z)
+
+- feat: implement user registration (2026-02-02T13:03:13.060Z)
