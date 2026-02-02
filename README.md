@@ -64,3 +64,5 @@
 - feat: implement activity discovery endpoint (2026-01-12T13:03:02.591Z)
 
 - chore: add ESLint and Prettier (2026-01-07T13:03:02.805Z)
+
+- chore: add Docker development setup (2026-02-02T13:03:03.021Z)
