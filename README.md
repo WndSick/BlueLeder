@@ -72,3 +72,5 @@
 - chore: add Docker development setup (2026-04-23T13:03:03.490Z)
 
 - refactor: extract authentication service (2026-05-06T13:03:03.705Z)
+
+- feat: implement notification service (2026-02-07T13:03:03.910Z)
