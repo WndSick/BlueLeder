@@ -116,3 +116,5 @@
 - feat: add refresh token support (2026-02-09T13:03:08.269Z)
 
 - feat: add request validation middleware (2026-08-04T13:03:08.531Z)
+
+- feat: integrate Redis caching (2026-02-25T13:03:08.755Z)
