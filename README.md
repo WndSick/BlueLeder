@@ -182,3 +182,5 @@
 - feat: add BullMQ background jobs (2026-05-14T13:03:15.718Z)
 
 - feat: add refresh token support (2026-05-23T13:03:15.936Z)
+
+- docs: add API usage examples (2026-03-05T13:03:16.145Z)
