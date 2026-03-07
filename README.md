@@ -110,3 +110,5 @@
 - feat: implement JWT authentication (2026-05-07T13:03:07.610Z)
 
 - docs: document environment variables (2026-05-24T13:03:07.826Z)
+
+- chore: add Docker development setup (2026-03-07T13:03:08.053Z)
