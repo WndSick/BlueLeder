@@ -44,3 +44,5 @@
 - fix: validate malformed API payloads (2026-05-01T13:03:00.431Z)
 
 - docs: document backend setup (2026-04-28T13:03:00.654Z)
+
+- docs: add project architecture overview (2026-03-07T13:03:00.866Z)
