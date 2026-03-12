@@ -24,3 +24,5 @@
 - chore: add Docker development setup (2026-04-10T13:02:58.233Z)
 
 - fix: handle expired JWT tokens (2026-08-06T13:02:58.456Z)
+
+- chore: initialize project structure (2026-03-12T13:02:58.667Z)
