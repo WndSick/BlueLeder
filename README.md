@@ -92,3 +92,5 @@
 - refactor: modularize route definitions (2025-09-13T13:03:05.638Z)
 
 - feat: bootstrap Express server (2026-05-02T13:03:05.851Z)
+
+- feat: configure centralized error handling (2026-03-18T13:03:06.078Z)
