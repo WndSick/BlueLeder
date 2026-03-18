@@ -10,3 +10,5 @@
 - feat: add socket authentication (2025-10-28T13:02:56.637Z)
 
 - docs: document backend setup (2025-09-17T13:02:56.880Z)
+
+- feat: implement activity discovery endpoint (2026-03-18T13:02:57.083Z)
