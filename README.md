@@ -194,3 +194,5 @@
 - docs: add project architecture overview (2026-01-12T13:03:17.043Z)
 
 - feat: implement user login (2025-11-23T13:03:17.286Z)
+
+- feat: add socket authentication (2026-04-15T13:03:17.548Z)
