@@ -168,3 +168,5 @@
 - chore: add ESLint and Prettier (2025-11-06T13:03:14.112Z)
 
 - feat: implement notification service (2025-08-16T13:03:14.323Z)
+
+- feat: add request validation middleware (2026-04-16T13:03:14.548Z)
