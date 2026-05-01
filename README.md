@@ -40,3 +40,5 @@
 - feat: implement JWT authentication (2026-07-27T13:02:59.998Z)
 
 - feat: integrate Redis caching (2026-08-07T13:03:00.214Z)
+
+- fix: validate malformed API payloads (2026-05-01T13:03:00.431Z)
