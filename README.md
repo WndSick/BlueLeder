@@ -90,3 +90,5 @@
 - feat: implement activity creation API (2026-07-17T13:03:05.422Z)
 
 - refactor: modularize route definitions (2025-09-13T13:03:05.638Z)
+
+- feat: bootstrap Express server (2026-05-02T13:03:05.851Z)
