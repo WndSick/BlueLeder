@@ -70,3 +70,5 @@
 - feat: implement activity creation API (2026-05-10T13:03:03.263Z)
 
 - chore: add Docker development setup (2026-04-23T13:03:03.490Z)
+
+- refactor: extract authentication service (2026-05-06T13:03:03.705Z)
