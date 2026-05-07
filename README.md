@@ -106,3 +106,5 @@
 - feat: add BullMQ background jobs (2025-09-22T13:03:07.167Z)
 
 - docs: document backend setup (2025-08-17T13:03:07.378Z)
+
+- feat: implement JWT authentication (2026-05-07T13:03:07.610Z)
