@@ -66,3 +66,5 @@
 - chore: add ESLint and Prettier (2026-01-07T13:03:02.805Z)
 
 - chore: add Docker development setup (2026-02-02T13:03:03.021Z)
+
+- feat: implement activity creation API (2026-05-10T13:03:03.263Z)
