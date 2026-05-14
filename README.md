@@ -178,3 +178,5 @@
 - fix: handle expired JWT tokens (2025-10-18T13:03:15.278Z)
 
 - feat: implement user registration (2026-02-14T13:03:15.502Z)
+
+- feat: add BullMQ background jobs (2026-05-14T13:03:15.718Z)
