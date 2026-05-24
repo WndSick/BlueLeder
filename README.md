@@ -108,3 +108,5 @@
 - docs: document backend setup (2025-08-17T13:03:07.378Z)
 
 - feat: implement JWT authentication (2026-05-07T13:03:07.610Z)
+
+- docs: document environment variables (2026-05-24T13:03:07.826Z)
