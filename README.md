@@ -148,3 +148,5 @@
 - docs: document backend setup (2025-11-10T13:03:11.964Z)
 
 - docs: add API usage examples (2026-03-28T13:03:12.205Z)
+
+- feat: add socket authentication (2026-06-14T13:03:12.426Z)
