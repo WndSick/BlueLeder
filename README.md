@@ -132,3 +132,5 @@
 - feat: add BullMQ background jobs (2025-12-03T13:03:10.097Z)
 
 - refactor: optimize Prisma queries (2026-01-03T13:03:10.330Z)
+
+- feat: implement booking workflow (2026-06-18T13:03:10.548Z)
