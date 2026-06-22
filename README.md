@@ -26,3 +26,5 @@
 - fix: handle expired JWT tokens (2026-08-06T13:02:58.456Z)
 
 - chore: initialize project structure (2026-03-12T13:02:58.667Z)
+
+- docs: add API usage examples (2026-06-22T13:02:58.881Z)
