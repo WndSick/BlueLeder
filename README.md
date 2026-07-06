@@ -16,3 +16,5 @@
 - feat: integrate Redis caching (2025-12-22T13:02:57.325Z)
 
 - feat: implement user login (2026-06-10T13:02:57.554Z)
+
+- refactor: extract authentication service (2026-07-06T13:02:57.797Z)
