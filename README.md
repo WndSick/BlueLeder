@@ -86,3 +86,5 @@
 - feat: implement notification service (2026-08-23T13:03:04.991Z)
 
 - feat: implement activity matching engine (2026-02-16T13:03:05.209Z)
+
+- feat: implement activity creation API (2026-07-17T13:03:05.422Z)
