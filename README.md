@@ -36,3 +36,5 @@
 - fix: resolve Redis reconnect handling (2026-06-13T13:02:59.540Z)
 
 - test: add authentication integration tests (2026-01-02T13:02:59.769Z)
+
+- feat: implement JWT authentication (2026-07-27T13:02:59.998Z)
