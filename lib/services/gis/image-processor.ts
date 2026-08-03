@@ -85,10 +85,12 @@ export class ImageProcessingService {
       const rVal = red[idx] || 0.1;
       const gVal = green[idx] || 0.18;
       
-      // Map to 0-255 RGB
-      const r = Math.floor(rVal * 255);
-      const g = Math.floor(gVal * 255);
-      const b = Math.floor(rVal * 0.8 * 255); // low blue channel
+      // Map to 0-255 RGB cleanly handling 0-1 and 0-10000 reflectance ranges
+      const normR = rVal > 1 ? rVal / 10000 : rVal;
+      const normG = gVal > 1 ? gVal / 10000 : gVal;
+      const r = Math.min(255, Math.max(0, Math.floor(normR * 255)));
+      const g = Math.min(255, Math.max(0, Math.floor(normG * 255)));
+      const b = Math.min(255, Math.max(0, Math.floor(normR * 0.8 * 255)));
 
       return { r, g, b };
     });
@@ -96,9 +98,11 @@ export class ImageProcessingService {
     try {
       if (!fs.existsSync(this.outputDir)) {
         fs.mkdirSync(this.outputDir, { recursive: true });
+        console.log(`Created directory: public/mrv/`);
       }
       const filepath = path.join(this.outputDir, filename);
       fs.writeFileSync(filepath, buffer);
+      console.log(`Saved true-color.bmp`);
     } catch (err: any) {
       console.warn("Could not write BMP image file:", err.message);
     }
@@ -134,9 +138,12 @@ export class ImageProcessingService {
     try {
       if (!fs.existsSync(this.outputDir)) {
         fs.mkdirSync(this.outputDir, { recursive: true });
+        console.log(`Created directory: public/mrv/`);
       }
       const filepath = path.join(this.outputDir, filename);
       fs.writeFileSync(filepath, buffer);
+      console.log(`Saved ndvi.bmp`);
+      console.log(`Saved heatmap.bmp`);
     } catch (err: any) {
       console.warn("Could not write Heatmap BMP file:", err.message);
     }

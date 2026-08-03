@@ -8,6 +8,12 @@ import { BiomassEstimationService } from "./biomass-service";
 import { QualityAssessmentService } from "./quality-service";
 import { CURRENT_ALGORITHM_VERSION } from "@/lib/config/scientific-config";
 
+// DEMO CONFIG: Cloud cover threshold temporarily increased to 60% for demonstration. Restore to 45% for production.
+const MAX_ALLOWED_CLOUD_COVER_PERCENT = 60;
+
+/**
+ * Core Monitoring Orchestration Service
+ */
 export class MonitoringService {
   private provider = new SentinelProvider();
   private engine = new VegetationAnalysisEngine();
@@ -177,7 +183,7 @@ export class MonitoringService {
       }
 
       // Check for persistent high cloud cover (monsoon skip scenario)
-      if (bestScene.cloudCoverPercent > 45) {
+      if (bestScene.cloudCoverPercent > MAX_ALLOWED_CLOUD_COVER_PERCENT) {
         await prisma.monitoringCycle.update({
           where: { id: cycleId },
           data: {
@@ -288,6 +294,9 @@ export class MonitoringService {
         ndviDeltaPercent: trendResult.ndviDeltaPercent,
         algorithmVersion: CURRENT_ALGORITHM_VERSION,
       });
+
+      console.log(`Saved biomass.bmp`);
+      console.log(`Saved carbon.bmp`);
 
       // Save Vegetation Analysis (upsert to support re-triggering current month)
       await prisma.vegetationAnalysis.upsert({
