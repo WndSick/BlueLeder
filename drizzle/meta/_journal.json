@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1785282540945,
+      "tag": "0000_busy_darkstar",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1785283278226,
+      "tag": "0001_huge_millenium_guard",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1785283317832,
+      "tag": "0002_fine_stryfe",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1785284868610,
+      "tag": "0003_loose_namora",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1785285687440,
+      "tag": "0004_perpetual_steel_serpent",
+      "breakpoints": true
+    }
+  ]
+}

@@ -1,0 +1,344 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+enum Role {
+  ADMIN
+  NGO
+  COMMUNITY
+  VERIFIER
+  BUYER
+}
+
+enum ProjectStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  CHANGES_REQUESTED
+  APPROVED
+  REJECTED
+}
+
+enum DocumentType {
+  LAND_AUTHORIZATION
+  RESTORATION_PLAN
+  BASELINE_EVIDENCE
+}
+
+model User {
+  id                 String            @id @default(uuid())
+  email              String            @unique
+  passwordHash       String            @map("password_hash")
+  fullName           String            @map("full_name")
+  role               Role              @default(NGO)
+  organization       String?
+  registrationNumber String?           @map("registration_number")
+  organizationType   String?           @map("organization_type")
+  website            String?
+  contactPhone       String?           @map("contact_phone")
+  verificationStatus String            @default("unverified") @map("verification_status")
+  createdAt          DateTime          @default(now()) @map("created_at")
+  updatedAt          DateTime          @updatedAt @map("updated_at")
+  projects           Project[]         @relation("ProjectOwner")
+  reviewedProjects   Project[]         @relation("ProjectReviewer")
+  creditBatches      CreditBatch[]
+  timelines          ProjectTimeline[]
+  mrvReports         AutomatedMrvReport[]
+
+  @@map("users")
+}
+
+model Project {
+  id                      String            @id @default(uuid())
+  ownerId                 String            @map("owner_id")
+  owner                   User              @relation("ProjectOwner", fields: [ownerId], references: [id])
+  name                    String
+  ecosystem               String
+  state                   String
+  district                String
+  village                 String
+  startDate               String            @map("start_date")
+  durationYears           Int               @map("duration_years")
+  responsibleOrganization String            @map("responsible_organization")
+  communityPartner        String            @map("community_partner")
+  boundaryGeojson         String            @map("boundary_geojson")
+  areaHectares            Float             @map("area_hectares")
+  status                  ProjectStatus     @default(DRAFT)
+  reviewerNote            String?           @map("reviewer_note")
+  reviewedAt              DateTime?         @map("reviewed_at")
+  reviewedById            String?           @map("reviewed_by_id")
+  reviewedBy              User?             @relation("ProjectReviewer", fields: [reviewedById], references: [id])
+  submittedAt             DateTime          @default(now()) @map("submitted_at")
+  updatedAt               DateTime          @updatedAt @map("updated_at")
+  documents               Document[]
+  creditBatches           CreditBatch[]
+  ledgerEvents            LedgerEvent[]
+  timeline                ProjectTimeline[]
+  monitoringConfig        MonitoringConfig?
+  baselineAnalysis        BaselineAnalysis?
+  monitoringCycles        MonitoringCycle[]
+
+  @@map("projects")
+}
+
+model Document {
+  id          String       @id @default(uuid())
+  projectId   String       @map("project_id")
+  project     Project      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  category    DocumentType
+  fileName    String       @map("file_name")
+  objectKey   String       @map("object_key")
+  contentType String       @map("content_type")
+  sizeBytes   Int          @map("size_bytes")
+  uploadedAt  DateTime     @default(now()) @map("uploaded_at")
+
+  @@map("documents")
+}
+
+model ProjectTimeline {
+  id        String        @id @default(uuid())
+  projectId String        @map("project_id")
+  project   Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  status    ProjectStatus
+  note      String?
+  userId    String        @map("user_id")
+  user      User          @relation(fields: [userId], references: [id])
+  createdAt DateTime      @default(now()) @map("created_at")
+
+  @@map("project_timelines")
+}
+
+model EvidenceItem {
+  id              String   @id @default(uuid())
+  projectId       String   @map("project_id")
+  sourceType      String   @map("source_type")
+  monitoringStage String   @map("monitoring_stage")
+  periodLabel     String   @map("period_label")
+  observedAt      DateTime @map("observed_at")
+  uploaderEmail   String   @map("uploader_email")
+  dataJson        String   @map("data_json")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  @@map("evidence_items")
+}
+
+model EvidenceFile {
+  id         String   @id @default(uuid())
+  evidenceId String   @map("evidence_id")
+  projectId  String   @map("project_id")
+  fileRole   String   @map("file_role")
+  fileName   String   @map("file_name")
+  objectKey  String   @map("object_key")
+  contentType String  @map("content_type")
+  sizeBytes  Int      @map("size_bytes")
+  sha256     String
+  uploadedAt DateTime @default(now()) @map("uploaded_at")
+
+  @@map("evidence_files")
+}
+
+model EvidenceReview {
+  id            String   @id @default(uuid())
+  evidenceId    String   @map("evidence_id")
+  projectId     String   @map("project_id")
+  reviewerEmail String   @map("reviewer_email")
+  decision      String
+  comment       String?
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  @@map("evidence_reviews")
+}
+
+model CreditBatch {
+  id             String      @id @default(uuid())
+  projectId      String      @map("project_id")
+  project        Project     @relation(fields: [projectId], references: [id])
+  periodKey      String      @map("period_key")
+  vintageYear    Int         @map("vintage_year")
+  reportHash     String?     @map("report_hash")
+  issuedQuantity Float       @map("issued_quantity")
+  currentHolder  String      @map("current_holder")
+  status         String      @default("draft")
+  createdBy      String      @map("created_by")
+  creator        User        @relation(fields: [createdBy], references: [id])
+  createdAt      DateTime    @default(now()) @map("created_at")
+  updatedAt      DateTime    @updatedAt @map("updated_at")
+
+  @@unique([projectId, periodKey])
+  @@map("credit_batches")
+}
+
+model LedgerEvent {
+  id                String   @id @default(uuid())
+  projectId         String   @map("project_id")
+  project           Project  @relation(fields: [projectId], references: [id])
+  batchId           String?  @map("batch_id")
+  eventType         String   @map("event_type")
+  entityId          String   @map("entity_id")
+  periodKey         String?  @map("period_key")
+  payloadHash       String   @map("payload_hash")
+  previousEventHash String?  @map("previous_event_hash")
+  eventHash         String   @unique @map("event_hash")
+  network           String
+  chainId           Int      @map("chain_id")
+  transactionId     String?  @map("transaction_id")
+  actorEmail        String   @map("actor_email")
+  metadataJson      String   @map("metadata_json")
+  createdAt         DateTime @default(now()) @map("created_at")
+
+  @@map("ledger_events")
+}
+
+model BenefitRecord {
+  id          String   @id @default(uuid())
+  projectId   String   @map("project_id")
+  recordType  String   @map("record_type")
+  amount      Float
+  currency    String   @default("INR")
+  beneficiary String
+  description String
+  recordedAt  DateTime @default(now()) @map("recorded_at")
+  proofHash   String   @map("proof_hash")
+
+  @@map("benefit_records")
+}
+
+model MonitoringConfig {
+  id         String   @id @default(uuid())
+  projectId  String   @unique @map("project_id")
+  project    Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  interval   Int      @default(30) // Interval in days (e.g. 30, 90)
+  active     Boolean  @default(true)
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@map("monitoring_configs")
+}
+
+model BaselineAnalysis {
+  id              String   @id @default(uuid())
+  projectId       String   @unique @map("project_id")
+  project         Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  baselineDate    DateTime @map("baseline_date")
+  ndviMean        Float    @map("ndvi_mean")
+  eviMean         Float    @map("evi_mean")
+  ndwiMean        Float    @map("ndwi_mean")
+  saviMean        Float    @map("savi_mean")
+  msaviMean       Float    @map("msavi_mean")
+  confidenceScore Float    @map("confidence_score")
+  trueColorPath   String   @map("true_color_path")
+  ndviMapPath     String   @map("ndvi_map_path")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  @@map("baseline_analyses")
+}
+
+model MonitoringCycle {
+  id               String            @id @default(uuid())
+  projectId        String            @map("project_id")
+  project          Project           @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  periodKey        String            @map("period_key") // e.g. "2026-M07"
+  monitoringStage  String            @map("monitoring_stage") // "baseline", "quarterly", "annual"
+  status           String            @default("scheduled") // "scheduled", "running", "completed", "failed", "skipped"
+  retryCount       Int               @default(0) @map("retry_count")
+  errorMessage     String?           @map("error_message")
+  scheduledAt      DateTime          @map("scheduled_at")
+  startedAt        DateTime?         @map("started_at")
+  completedAt      DateTime?         @map("completed_at")
+  satelliteScenes  SatelliteScene[]
+  vegetation       VegetationAnalysis?
+  mrvReport        AutomatedMrvReport?
+  createdAt        DateTime          @default(now()) @map("created_at")
+  updatedAt        DateTime          @updatedAt @map("updated_at")
+
+  @@unique([projectId, periodKey])
+  @@map("monitoring_cycles")
+}
+
+model SatelliteScene {
+  id                 String          @id @default(uuid())
+  cycleId            String          @map("cycle_id")
+  cycle              MonitoringCycle @relation(fields: [cycleId], references: [id], onDelete: Cascade)
+  sceneId            String          @map("scene_id")
+  platform           String          @default("Sentinel-2")
+  cloudCoverPercent  Float           @map("cloud_cover_percent")
+  sclCloudRatio      Float?          @map("scl_cloud_ratio")
+  sclShadowRatio     Float?          @map("scl_shadow_ratio")
+  sclValidRatio      Float?          @map("scl_valid_ratio")
+  acquisitionDate    DateTime        @map("acquisition_date")
+  bandsJson          String          @map("bands_json") // Cached path to raw band files
+  trueColorPath      String          @map("true_color_path")
+  createdAt          DateTime        @default(now()) @map("created_at")
+
+  @@map("satellite_scenes")
+}
+
+model VegetationAnalysis {
+  id              String          @id @default(uuid())
+  cycleId         String          @unique @map("cycle_id")
+  cycle           MonitoringCycle @relation(fields: [cycleId], references: [id], onDelete: Cascade)
+  analyzedAt      DateTime        @default(now()) @map("analyzed_at")
+  ndviMin         Float           @map("ndvi_min")
+  ndviMax         Float           @map("ndvi_max")
+  ndviMean        Float           @map("ndvi_mean")
+  ndwiMean        Float           @map("ndwi_mean")
+  eviMean         Float           @map("evi_mean")
+  saviMean        Float           @map("savi_mean")
+  msaviMean       Float           @map("msavi_mean")
+  agbEstimated    Float?          @map("agb_estimated")
+  bgbEstimated    Float?          @map("bgb_estimated")
+  totalBiomassTons Float?         @map("total_biomass_tons")
+  trueColorPath   String          @map("true_color_path")
+  ndviMapPath     String          @map("ndvi_map_path")
+  createdAt       DateTime        @default(now()) @map("created_at")
+
+  @@map("vegetation_analyses")
+}
+
+model AutomatedMrvReport {
+  id                 String             @id @default(uuid())
+  cycleId            String             @unique @map("cycle_id")
+  cycle              MonitoringCycle    @relation(fields: [cycleId], references: [id], onDelete: Cascade)
+  algorithmVersion   String             @default("v2.0.0-phase4") @map("algorithm_version")
+  
+  // Trend calculations
+  ndviDeltaPercent   Float              @map("ndvi_delta_percent") // compared to previous
+  baselineDeltaPercent Float            @map("baseline_delta_percent") // compared to baseline
+  yoyDeltaPercent    Float?             @map("yoy_delta_percent") // compared to same month prior year
+  rollingMeanNdvi    Float?             @map("rolling_mean_ndvi")
+  confidenceScore    Float              @map("confidence_score")
+  mqiScore           Float?             @map("mqi_score")
+  qualityFlagsJson   String?            @map("quality_flags_json")
+  anomalyDetected    Boolean            @default(false) @map("anomaly_detected")
+  anomalyReason      String?            @map("anomaly_reason")
+
+  // Verification
+  verificationStatus String             @default("awaiting_verification") @map("verification_status") // "awaiting_verification", "verified", "flagged"
+  verifierComment    String?            @map("verifier_comment")
+  verifiedAt         DateTime?          @map("verified_at")
+  verifiedById       String?            @map("verified_by_id")
+  verifiedBy         User?              @relation(fields: [verifiedById], references: [id])
+  createdAt          DateTime           @default(now()) @map("created_at")
+  updatedAt          DateTime           @updatedAt @map("updated_at")
+  timeline           MrvReportTimeline[]
+
+  @@map("automated_mrv_reports")
+}
+
+model MrvReportTimeline {
+  id          String             @id @default(uuid())
+  reportId    String             @map("report_id")
+  report      AutomatedMrvReport @relation(fields: [reportId], references: [id], onDelete: Cascade)
+  status      String             @map("status")
+  note        String?
+  actorEmail  String             @map("actor_email")
+  createdAt   DateTime           @default(now()) @map("created_at")
+
+  @@map("mrv_report_timelines")
+}
