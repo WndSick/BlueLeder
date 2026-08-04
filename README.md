@@ -114,3 +114,5 @@
 - chore: add Docker development setup (2026-03-07T13:03:08.053Z)
 
 - feat: add refresh token support (2026-02-09T13:03:08.269Z)
+
+- feat: add request validation middleware (2026-08-04T13:03:08.531Z)
