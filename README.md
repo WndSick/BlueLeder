@@ -22,3 +22,5 @@
 - refactor: separate booking business logic (2026-01-12T13:02:58.016Z)
 
 - chore: add Docker development setup (2026-04-10T13:02:58.233Z)
+
+- fix: handle expired JWT tokens (2026-08-06T13:02:58.456Z)
