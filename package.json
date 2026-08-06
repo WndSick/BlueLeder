@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "gogreen": "node ./scripts/goGreen/index.js",
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {

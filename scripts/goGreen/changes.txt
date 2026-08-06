@@ -1,0 +1,35 @@
+chore: initialize project structure
+chore: configure TypeScript
+chore: add ESLint and Prettier
+chore: configure environment variables
+chore: add Docker development setup
+docs: add project architecture overview
+docs: document backend setup
+docs: add API usage examples
+docs: document environment variables
+feat: bootstrap Express server
+feat: configure Prisma client
+feat: create initial database schema
+feat: implement JWT authentication
+feat: add refresh token support
+feat: implement user registration
+feat: implement user login
+feat: add request validation middleware
+feat: configure centralized error handling
+feat: implement activity creation API
+feat: implement activity discovery endpoint
+feat: implement booking workflow
+feat: integrate Redis caching
+feat: add BullMQ background jobs
+feat: implement notification service
+feat: add socket authentication
+feat: implement activity matching engine
+refactor: extract authentication service
+refactor: separate booking business logic
+refactor: modularize route definitions
+refactor: optimize Prisma queries
+fix: handle expired JWT tokens
+fix: resolve Redis reconnect handling
+fix: prevent duplicate booking requests
+fix: validate malformed API payloads
+test: add authentication integration tests
