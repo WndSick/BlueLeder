@@ -38,3 +38,5 @@
 - test: add authentication integration tests (2026-01-02T13:02:59.769Z)
 
 - feat: implement JWT authentication (2026-07-27T13:02:59.998Z)
+
+- feat: integrate Redis caching (2026-08-07T13:03:00.214Z)
