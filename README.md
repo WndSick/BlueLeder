@@ -138,3 +138,5 @@
 - feat: implement user login (2026-05-28T13:03:10.784Z)
 
 - feat: implement booking workflow (2025-09-03T13:03:11.004Z)
+
+- feat: configure Prisma client (2026-08-09T13:03:11.263Z)
