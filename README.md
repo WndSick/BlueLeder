@@ -82,3 +82,5 @@
 - feat: implement user login (2026-08-07T13:03:04.574Z)
 
 - feat: integrate Redis caching (2025-11-07T13:03:04.778Z)
+
+- feat: implement notification service (2026-08-23T13:03:04.991Z)
